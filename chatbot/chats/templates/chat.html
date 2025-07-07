@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="chat-container">
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <div class="header">
+      <div class="logo-wrapper">
+        <div class="logo"><i class="fa-solid fa-scale-balanced"></i></div>
+        <div class="brand-name">Legal Edge</div>
+        
+      </div>
+      <button id="toggleSidebar" class="toggle-btn"><i class="fas fa-bars"></i></button>
+    </div>
+
+    <button class="new-chat-btn" id="new-chat-btn">
+      <i class="fa-solid fa-circle-plus"></i>
+      <span>New chat</span>
+    </button>
+
+    <div class="recent-chats">
+      <h3 class="recent-head"><i class="fa-solid fa-clock-rotate-left fa-sm" style="color: #0f131a;"></i>History</h3>
+      <ul class="chat-links" id="chat-history">
+        <!-- Chat history will be populated here -->
+      </ul>
+    </div>
+
+    <div class="sidebar-footer">
+      <a href="#" class="footer-item">
+        <i class="fas fa-question-circle" style="margin-right: 8px;"></i><span>Help</span> 
+      </a>
+      <a href="{% url 'logout' %}" class="footer-item">
+        <i class="fas fa-sign-out-alt" style="margin-right: 8px;"></i> <span>Logout</span>
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <div class="top-right-controls">
+      <button class="help-btn">
+        <i class="fas fa-circle-question"></i>
+        <span class="btn-label">Help</span>
+      </button>
+      <div class="user-icon">
+        <i class="fas fa-user"></i>
+        <span class="user-label">{{ request.user.get_short_name|default:request.user.username }}</span>
+      </div>
+    </div>
+
+    <div class="chat-area">
+      <!-- Welcome Content (Initial State) -->
+      <div class="welcome-content" id="welcomeContent">
+
+        <div class="welcome-text">
+          Welcome! <span class="wave">👋</span>
+        </div>
+
+        <div class="subtitle">
+          Here to help you with advice, summary and more! What do you want to know about?
+        </div>
+
+        <div class="initial-input-area">
+          <form id="center-form">
+            <div class="input-container">
+              <!-- <span class="mic-icon"><i class="fa-solid fa-microphone"></i></span> -->
+              <input type="text" class="chat-input" placeholder="Ask Something..." id="message" required>
+              <button type="submit" class="send-btn"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+          </form>
+        </div>
+
+
+        <div class="sfeature-cards">
+          <div class="sfeature-card suggestion-card">
+            <div class="card-icon productivity">📊</div>
+            <div class="card-title">Quick Legal Lookup</div>
+            <div class="card-description">
+              What does this case is about?
+            </div>
+          </div>
+
+          <div class="sfeature-card suggestion-card">
+            <div class="card-icon onboarding">💡</div>
+            <div class="card-title">Extract Case Facts</div>
+            <div class="card-description">
+              Who are the parties involved in this case?
+            </div>
+          </div>
+
+          <div class="sfeature-card suggestion-card">
+            <div class="card-icon voice">🎯</div>
+            <div class="card-title">Case Insight Finder</div>
+            <div class="card-description">
+              Summarize the key points of this judgment.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat Messages Container -->
+      <div class="chat-messages" id="chatMessages" style="display: none;">
+        <!-- Chat messages will be populated here -->
+      </div>
+    </div>
+
+    <!-- Bottom Input Area (Chat Mode) -->
+    <div class="bottom-input-area" id="bottomInputArea" style="display: none;">
+      <form id="chat-form" class="chat-form">
+        <div class="input-container">
+          <span class="mic-icon"><i class="fa-solid fa-microphone"></i></span>
+          <input type="text" class="chat-input" placeholder="Ask Something..." id="message-bottom" required>
+          <button type="submit" class="send-btn"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="{% static 'chat.js' %}"></script>
+{% endblock %}

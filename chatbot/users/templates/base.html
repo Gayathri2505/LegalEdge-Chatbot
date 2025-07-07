@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Legal Edge</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/style.css' %}">
+    <link rel="stylesheet" href="{% static '/home_styles.css' %}">
+    <link rel="stylesheet" href="{% static '/form_styles.css' %}">
+    <link rel="stylesheet" href="{% static '/style_chat.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.9/purify.min.js"></script>
+</head>
+
+<body>
+    <div class="page-wrapper">
+        {% if not hide_navbar %}
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <i class="fa-solid fa-scale-balanced"></i>Legal Edge 
+            </div>
+            <div class="navbar-links">
+                {% if request.user.is_authenticated %}
+                <a href="{% url 'logout' %}" class="nav-link">Logout</a>
+                {% else %}
+                <a href="{% url 'auth' %}" class="nav-btn">Sign In / Sign Up</a>
+                {% endif %}
+            </div>
+        </nav>
+        {% endif %}
+        {% block content %}{% endblock %}
+    </div>
+</body>
+
+</html>

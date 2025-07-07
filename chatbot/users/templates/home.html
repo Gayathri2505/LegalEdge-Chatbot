@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="homepage-wrapper">
+  <div class="hero-section">
+    <h1 class="hero-title">Welcome!</h1>
+    <p class="hero-subtitle">Your intelligent assistant, ready to chat 24/7</p>
+    {% if request.user.is_authenticated %}
+      <a href="{% url 'chat' %}" class="hero-button">Start Chatting</a>
+    {% else %}
+      <a href="{% url 'auth' %}" class="hero-button">Start Chatting</a>
+    {% endif %}
+  </div>
+
+  <div class="features">
+    <div class="feature-card">
+      <h3>Smart Assistance</h3>
+      <p>Ask questions and get quick, relevant answers instantly.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Easy to Use</h3>
+      <p>Simple, elegant interface for a smooth chat experience.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Powered by AI</h3>
+      <p>Advanced AI makes the conversation natural and useful.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
