@@ -3,7 +3,7 @@ import json
 import hashlib
 from tqdm import tqdm
 from django.utils import timezone
-from langchain.document_loaders import PyPDFLoader, Docx2txtLoader, TextLoader
+from langchain_community.document_loaders import PyPDFLoader, Docx2txtLoader, TextLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from chats.models import Document
 from ..utils.embeddings import generate_embedding
