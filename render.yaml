@@ -4,7 +4,7 @@ services:
     name: legal-chatbot
     runtime: python
     buildCommand: 'chatbot/build.sh'
-    startCommand: python -m gunicorn chatbot.asgi:application -k uvicorn.workers.UvicornWorker
+    startCommand: python -m gunicorn chatbot/chatbot.asgi:application -k uvicorn.workers.UvicornWorker
     envVars:
     - key: GROQ_API_KEY
       value: ""  
