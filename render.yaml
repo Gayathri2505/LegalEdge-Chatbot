@@ -6,14 +6,13 @@ services:
     buildCommand: './build.sh'
     startCommand: python -m gunicorn chatbot.asgi:application -k uvicorn.workers.UvicornWorker
     envVars:
-      envVars:
-      - key: GROQ_API_KEY
-        value: ""  
-      - key: GROQ_TOKEN_LIMIT
-        value: ""  
-      - key: SECRET_KEY
-        value: ""  
-      - key: DATABASE_URL
-        value: ""  
-      - key: DEBUG
-        value: "0"
+    - key: GROQ_API_KEY
+      value: ""  
+    - key: GROQ_TOKEN_LIMIT
+      value: ""  
+    - key: SECRET_KEY
+      value: ""  
+    - key: DATABASE_URL
+      value: ""  
+    - key: DEBUG
+      value: "0"
